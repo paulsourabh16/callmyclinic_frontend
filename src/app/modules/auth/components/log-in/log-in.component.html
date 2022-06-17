@@ -1,0 +1,51 @@
+<div class="w-max p-6 h-2/4 ml-auto mr-auto mt-44 rounded-2xl">
+    <span class="font-bold text-lg ml-4 mt-4">OPD Appoinment Booking System</span><br>
+    <span class="font-bold text-xl ml-28">Log-in</span>
+    <div class="grid grid-cols-1 gap-x-0.5">
+        <form [formGroup]="logInForm">
+            <div>
+                <mat-form-field class=" w-72 form-group ml-2 mt-9" floatLabel="always" appearance="outline"
+                    placeHolder="Enter Your Email Address">
+                    <mat-label>Email</mat-label>
+                    <div>
+                        <input class="form-group" formControlName="email" type="email" matInput required />
+                        <!-- <mat-icon>email</mat-icon> -->
+                    </div>
+                    <mat-error
+                        *ngIf="logInForm['controls'].email.invalid && (logInForm['controls'].email.dirty || logInForm['controls'].email.touched)">
+                        <span *ngIf="logInForm['controls'].email.errors?.required">
+                            {{validationMsg.FIELD_IS_REQUIRED}}
+                        </span>
+                        <span *ngIf="logInForm['controls'].email.errors?.pattern">
+                            {{validationMsg.EMAIL_PATTERN}}
+                        </span>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div>
+                <mat-form-field class="w-72 ml-2 mt-1" floatLabel="always" appearance="outline">
+                    <mat-label>Password</mat-label>
+                    <input type="password" [type]="hide ? 'password':'text'" formControlName="password" matInput
+                        required />
+                    <mat-icon class="material-icons cursor-pointer" matSuffix (click)="hide = !hide">
+                        {{hide ?'visibility_off' :'visibility'}}
+                    </mat-icon>
+                    <mat-error
+                        *ngIf="logInForm['controls'].password.invalid && (logInForm['controls'].password.dirty || logInForm['controls'].password.touched)">
+                        <span *ngIf="logInForm['controls'].password.errors?.required">
+                            <!-- {{validationMsg.FIELD_IS_REQUIRED}} -->
+                            This field is required
+                        </span>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div>
+                <a class="ml-44 text-blue-800 underline" [routerLink]="['/auth/forget-password']">forget password?</a>
+            </div>
+            <div>
+                <div class="d-grid gap-2 ml-28 mt-2">
+                    <button mat-raised-button color="primary" type="submit" (click)="onSubmit()">Log-in</button>
+                </div>
+            </div>
+        </form>
+    </div>

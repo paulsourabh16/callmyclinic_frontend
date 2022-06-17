@@ -1,0 +1,25 @@
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+
+import { BookAppoinmentComponent } from './book-appoinment.component';
+
+describe('BookAppoinmentComponent', () => {
+  let component: BookAppoinmentComponent;
+  let fixture: ComponentFixture<BookAppoinmentComponent>;
+
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      declarations: [ BookAppoinmentComponent ]
+    })
+    .compileComponents();
+  });
+
+  beforeEach(() => {
+    fixture = TestBed.createComponent(BookAppoinmentComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
+
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+});

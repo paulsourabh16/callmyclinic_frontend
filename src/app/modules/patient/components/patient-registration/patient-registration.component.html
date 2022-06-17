@@ -1,0 +1,149 @@
+<div class="justify-center w-1/2 mx-auto mt-14 rounded-2xl">
+    <div class="text-2xl mb-5">New patient</div>
+    <form [formGroup]="patientRegistration">
+        <div class="grid grid-cols-2 gap-5">
+            <div>
+                <mat-form-field floatLabel="always" class="w-full" appearance="outline">
+                    <mat-label>First name</mat-label>
+                    <input type="text" maxlength="15" formControlName="firstName" placeholder="First name" matInput
+                        required />
+                    <mat-error
+                        *ngIf="patientRegistration['controls'].firstName.invalid && (patientRegistration['controls'].firstName.dirty || patientRegistration['controls'].firstName.touched)">
+                        <span *ngIf="patientRegistration['controls'].firstName.errors?.required">
+                            <!-- {{validationMsg.FIELD_IS_REQUIRED}} -->
+                            This field is required
+                        </span>
+                        <span *ngIf="patientRegistration['controls'].firstName.errors?.pattern">
+                            <!-- {{validationMsg.FIELD_IS_REQUIRED}} -->
+                            Only alphanumeric characters allowed.
+                        </span>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div>
+                <mat-form-field class="w-full" floatLabel="always" appearance="outline">
+                    <mat-label>Last name</mat-label>
+                    <input type="text" formControlName="lastName" placeholder="Last name" matInput required />
+                    <mat-error
+                        *ngIf="patientRegistration['controls'].lastName.invalid && (patientRegistration['controls'].lastName.dirty || patientRegistration['controls'].lastName.touched)">
+                        <span *ngIf="patientRegistration['controls'].lastName.errors?.required">
+                            <!-- {{validationMsg.FIELD_IS_REQUIRED}} -->
+                            This field is required
+                        </span>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div>
+                <mat-form-field floatLabel="always" class="w-full" appearance="outline">
+                    <mat-label>Date of birth</mat-label>
+                    <input matInput [matDatepicker]="picker1" placeholder="Date of birth" formControlName="dob">
+                    <mat-datepicker-toggle matSuffix [for]="picker1">
+                    </mat-datepicker-toggle>
+                    <mat-datepicker #picker1></mat-datepicker>
+                    <mat-error
+                        *ngIf="patientRegistration['controls'].dob.invalid && (patientRegistration['controls'].dob.dirty || patientRegistration['controls'].dob.touched)">
+                        <span *ngIf="patientRegistration['controls'].dob.errors?.required">
+                            <!-- {{validationMsg.FIELD_IS_REQUIRED}} -->
+                            This field is required
+                        </span>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div>
+                <mat-radio-group class="w-full flex justify-between" formControlName="gender"
+                    aria-label="Select an option">
+                    <mat-radio-button value="Male">Male</mat-radio-button>
+                    <mat-radio-button value="Female">Female</mat-radio-button>
+                    <mat-radio-button value="Others">Others</mat-radio-button>
+                </mat-radio-group>
+            </div>
+            <div>
+                <mat-form-field class="w-full" floatLabel="always" appearance="outline">
+                    <mat-label>Phone number</mat-label>
+                    <input formControlName="phoneNo" placeholder="Mobile no." type="number" matInput required />
+                    <mat-error
+                        *ngIf="patientRegistration['controls'].phoneNo.invalid && (patientRegistration['controls'].phoneNo.dirty || patientRegistration['controls'].phoneNo.touched)">
+                        <span *ngIf="patientRegistration['controls'].phoneNo.errors?.required">
+                            <!-- {{validationMsg.FIELD_IS_REQUIRED}} -->
+                            This field is required
+                        </span>
+                        <span *ngIf="patientRegistration['controls'].phoneNo.errors?.pattern">
+                            <!-- {{validationMsg.FIELD_IS_REQUIRED}} -->
+                            invalid mobile number.
+                        </span>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div>
+                <mat-form-field class="w-full" floatLabel="always" appearance="outline">
+                    <mat-label>Email address</mat-label>
+                    <input type="email" formControlName="email" placeholder="E-mail" matInput required />
+                    <mat-error
+                        *ngIf="patientRegistration['controls'].email.invalid && (patientRegistration['controls'].email.dirty || patientRegistration['controls'].email.touched)">
+                        <span *ngIf="patientRegistration['controls'].email.errors?.required">
+                            <!-- {{validationMsg.FIELD_IS_REQUIRED}} -->
+                            This field is required
+                        </span>
+                        <span *ngIf="patientRegistration['controls'].email.errors?.pattern">
+                            <!-- {{validationMsg.FIELD_IS_REQUIRED}} -->
+                            Email id is invalid.
+                        </span>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div>
+                <mat-form-field class="w-full" floatLabel="always" appearance="outline">
+                    <mat-label>Address line 1</mat-label>
+                    <input formControlName="addressOne" placeholder="Address line 1" type="text" matInput required />
+                    <mat-error
+                        *ngIf="patientRegistration['controls'].addressOne.invalid && (patientRegistration['controls'].addressOne.dirty || patientRegistration['controls'].addressOne.touched)">
+                        <span *ngIf="patientRegistration['controls'].addressOne.errors?.required">
+                            <!-- {{validationMsg.FIELD_IS_REQUIRED}} -->
+                            This field is required
+                        </span>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div>
+                <mat-form-field class="w-full" floatLabel="always" appearance="outline">
+                    <mat-label>Address line 2</mat-label>
+                    <input formControlName="addressTwo" placeholder="Address line 2" type="text" matInput />
+                </mat-form-field>
+            </div>
+            <div>
+                <mat-form-field class="w-full" floatLabel="always" appearance="outline">
+                    <mat-label>State</mat-label>
+                    <input formControlName="state" type="text" placeholder="State" matInput required />
+                    <mat-error
+                        *ngIf="patientRegistration['controls'].state.invalid && (patientRegistration['controls'].state.dirty || patientRegistration['controls'].state.touched)">
+                        <span *ngIf="patientRegistration['controls'].state.errors?.required">
+                            <!-- {{validationMsg.FIELD_IS_REQUIRED}} -->
+                            This field is required
+                        </span>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div>
+                <mat-form-field class="w-full" floatLabel="always" appearance="outline">
+                    <mat-label>Country</mat-label>
+                    <input formControlName="country" type="text" placeholder="Country" matInput required />
+                    <mat-error
+                        *ngIf="patientRegistration['controls'].country.invalid && (patientRegistration['controls'].country.dirty || patientRegistration['controls'].country.touched)">
+                        <span *ngIf="patientRegistration['controls'].country.errors?.required">
+                            <!-- {{validationMsg.FIELD_IS_REQUIRED}} -->
+                            This field is required
+                        </span>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div>
+                <button mat-raised-button color="primary">Cancel</button>
+            </div>
+            <div>
+                <button class="hover:bg-indigo-900 flex float-right" mat-raised-button color="primary" type="submit"
+                    (click)="onSubmit()">Sign-up</button>
+            </div>
+        </div>
+
+    </form>
+</div>
